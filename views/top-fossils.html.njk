@@ -1,0 +1,27 @@
+{% extends "base.html.njk" %}
+
+{% block title %}Top-fossils{% endblock %}
+
+{% block content %}
+  <h1>Welcome {{ name }} </h1>
+      {% for i in arr %}
+      <div class="fossil-div">
+        <h3>{{ name }}, this is a {{ fossils[i].name }}</h3>
+        <h2>Liked {{ fossils[i].num_likes }} times.</h2>
+        <img src="{{ fossils[i].img }}" />
+      </div>
+      {% endfor %}
+
+      <form action="like-fossil" method="POST"> 
+        <label for="drop-down">Like a fossil</label>
+          <select name="drop">
+            <optgroup>
+              <option value="aust" name="aust">Australopithecus</option>
+              <option value="quetz" name="quetz">Quetzal</option>
+              <option value="steg" name="steg">Stegosaurus</option>
+              <option value="trex" name="trex">Tyrannosaurus Rex</option>
+            </optgroup>
+          </select>
+        <input type="submit"/>
+      </form>
+{% endblock %}
